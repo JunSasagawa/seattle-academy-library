@@ -19,7 +19,7 @@ public class UsersService {
 	final static Logger logger = LoggerFactory.getLogger(UsersService.class);
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
+	
 	/**
 	 * ユーザー情報を登録する
 	 * 
@@ -31,8 +31,15 @@ public class UsersService {
 		String sql = "INSERT INTO users (email, password,reg_date,upd_date) VALUES ('" + userInfo.getEmail() + "','"
 				+ userInfo.getPassword() + "',now(),now()" + ")";
 
-		jdbcTemplate.update(sql);
+		jdbcTemplate.update(sql);//javaとデーターベースをつなぐ
+		
 	}
+	public void resetUser(UserInfo userInfo) {
+		String sql;
+			sql = "UPDATE users SET email=?,password=? WHERE email= '" + userInfo.getEmail() + "','"
+					+ userInfo.getPassword() + "',now(),now()" + ")";;
+			jdbcTemplate.update(sql);
+		}
 
 	/**
 	 * ユーザー情報取得

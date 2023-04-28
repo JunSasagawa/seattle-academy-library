@@ -20,18 +20,15 @@
         </div>
         <div class="authorization">
             <div class="authorization_form">
-                <form method="post" action="login">
-                    <div class="title">ログイン</div>
-                    <label class="label">メールアドレス</label> <input type="text" class="input" name="email" id="email" autocomplete="off" required /> <label class="label">パスワード</label> <input type="password" class="input" id="password" name="password" required />
+                <form method="post" action="reset">
+                    <div class="title">パスワードリセット</div>
+                   <label class="label">メールアドレス</label> <input type="email" class="input" id="email" name="email" autocomplete="off" required> <label class="label">パスワード</label> <input type="password" class="input" id="password" name="password" required> 
+                   <label class="label">パスワード（確認用）</label><input type="password" class="input" id="passwordForCheck" name="passwordForCheck" required>
                     <c:if test="${!empty errorMessage}">
                         <div class="error">${errorMessage}</div>
                     </c:if>
-                    <input type="submit" class="button primary" value="ログイン" />
-                    <!---押されるとform実行--->
+                    <input type="submit" class="button primary" value="リセット" /> <!---押されるとform実行--->
                 </form>
-            </div>
-            <div class="authorization_navi">
-                <label class="authorization_text">まだアカウントをお持ちでないですか？</label> <a class="authorization_link marker" href="<%=request.getContextPath()%>/newAccount">アカウント作成</a><br> <label class="authorization_text">パスワードをお忘れの方</label> <a class="authorization_link marker" href="<%=request.getContextPath()%>/resetAccount">パスワードリセット</a>
             </div>
         </div>
         <footer>
